@@ -52,7 +52,7 @@ const game = () => {
             playerScore += 1;
             console.log(winningResult)
         } else {
-            console.log(result);
+            console.log(tieResult);
         }
      }
 
