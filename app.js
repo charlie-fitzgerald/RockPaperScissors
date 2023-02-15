@@ -1,16 +1,94 @@
-const rockBtn = document.getElementById('rock');
-const paperBtn = document.getElementById('paper');
-const scissorsBtn = document.getElementById('scissors');
-const btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll('.selection');
+const playerScoreSpan = document.getElementById('playerScore');
+const computerScoreSpan = document.getElementById('computerScore');
+const resetBtn = document.getElementById('reset');
+const resultText = document.getElementById('result');
+let playerScore = 0;
+let computerScore = 0;
 
-const getBtnValue = btn => {btn.addEventListener('click', e => {
-   let btnValue = e.target.value;
+playerScoreSpan.innerText = playerScore;
+computerScoreSpan.innerText = computerScore;
 
-   console.log(btnValue);
-    })
+const disableBtn = btn => btn.disabled = true;
+
+const enableBtn = btn => btn.disabled = false;
+
+const checkWin = () => {
+    if (playerScore === 5 || computerScore === 5) {
+        btns.forEach(btn => disableBtn(btn));
+
+        if (playerScore === 5) {
+            playerScoreSpan.style.color = 'green';
+            computerScoreSpan.style.color = 'red';
+            resultText.style.color = 'green';
+            resultText.style.fontWeight = 900;
+            resultText.innerText = 'You won the game!';
+        } else {
+            computerScoreSpan.style.color = 'green';
+            playerScoreSpan.style.color = 'red';
+            resultText.style.color = 'red';
+            resultText.style.fontWeight = 900;
+            resultText.innerText = 'You lost the game! Try again!';
+        }
+    }
 }
 
-btns.forEach(btn => getBtnValue(btn));
+const playRound = (playerSelection) => { 
+    let computerSelection = getComputerChoice();
+    
+
+    if (playerSelection === computerSelection) {
+        return 'tie';
+    }
+
+    if (playerSelection === 'rock' && computerSelection === 'paper' || playerSelection === 'paper' && computerSelection === 'scissors' 
+        || playerSelection === 'scissors' && computerSelection === 'rock') {
+        return "lose";
+    } else {
+        return 'win';
+    }
+}
+
+btns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        let playerSelection = e.target.value;
+     
+        let result = playRound(playerSelection);
+
+        if (result === 'win') {
+            playerScore += 1;
+            playerScoreSpan.innerText = playerScore;
+            computerScoreSpan.innerText = computerScore;
+            resultText.innerText = 'You won the round!';
+        } else if (result === 'lose') {
+            computerScore += 1;
+            playerScoreSpan.innerText = playerScore;
+            computerScoreSpan.innerText = computerScore;
+            resultText.innerText = 'You lost the round!';
+        } else {
+            playerScoreSpan.innerText = playerScore;
+            computerScoreSpan.innerText = computerScore;
+            resultText.innerText = "The round was a tie.";
+        }
+
+        checkWin();
+     })
+}) 
+
+resetBtn.addEventListener('click', e => {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreSpan.innerText = playerScore;
+    computerScoreSpan.innerText = computerScore;
+    playerScoreSpan.style.color = 'black';
+    computerScoreSpan.style.color = 'black';
+    resultText.style.color = 'black';
+    resultText.innerText = 'Click a button to begin';
+
+    btns.forEach(btn => enableBtn(btn));
+})
+
+
 
 const getComputerChoice = () => {
     const choiceArray = ['rock', 'paper', 'scissors'];
@@ -24,23 +102,7 @@ const capitalize = str => {
     return str.slice(0,1).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-const playRound = () => { 
 
-    if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== 'scissors') {
-        return 'Please choose a valid option!';
-    }
-
-    if (playerSelection === computerSelection) {
-        return 'tie';
-    }
-
-    if (playerSelection === 'rock' && computerSelection === 'paper' || playerSelection === 'paper' && computerSelection === 'scissors' 
-        || playerSelection === 'scissors' && computerSelection === 'rock') {
-        return "lose";
-    } else {
-        return 'win';
-    }
-}
 
 const game = () => {
     let result;

@@ -10,14 +10,20 @@
 <body>
     <div class="container-fluid">
         <div class="scoreboard">
-            <p>The score is: </p>
-            <br>
-            <p>Player: <span class="playerScore">0</span> to Computer: <span class="computerScore">0</span></p>
+            <p>Score</p>
+            <p>Player: <span id="playerScore">0</span> to Computer: <span id="computerScore">0</span></p>
+            
+        </div>
+
+        <div class="results">
+            <p id="result">Click a button to begin</p>
         </div>
         <br>
-        <button id="rock" value="rock" class="btn btn-outline-primary">Rock</button>
-        <button id="paper" value="paper" class="btn btn-outline-primary">Paper</button>
-        <button id="scissors" value="scissors" class="btn btn-outline-primary">Scissors</button>
+        <button id="rock" value="rock" class="btn btn-outline-primary selection">Rock</button>
+        <button id="paper" value="paper" class="btn btn-outline-primary selection">Paper</button>
+        <button id="scissors" value="scissors" class="btn btn-outline-primary selection">Scissors</button>
+        <br><br>
+        <button id="reset" class="btn btn-outline-warning">Reset</button>
     </div>
     
 
