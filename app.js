@@ -110,7 +110,7 @@ resetBtn.addEventListener('click', e => {
     playerScoreSpan.style.color = 'black';
     computerScoreSpan.style.color = 'black';
     resultText.style.color = 'black';
-    resultText.innerText = 'Click a button to begin';
+    resultText.innerText = 'Choose rock, paper, or scissors to begin';
     computerImg.src = 'images/start1.png';
     playerImg.src = 'images/start1.png';
 

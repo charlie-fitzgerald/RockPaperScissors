@@ -9,7 +9,10 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+}
+
+#body {
+    background-color: antiquewhite;
 }
 
 p,
@@ -27,6 +30,7 @@ label {
     justify-content: center;
     align-items: center;
     padding: 50px;
+    background-color: white;
 }
 
 .btn {
@@ -45,7 +49,7 @@ label {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    margin: 20px;
+    margin: 5em;
 }
 
 img {
@@ -56,11 +60,16 @@ img {
 
 .left-image,
 .right-image {
-    width: 200px;
     height: 200px;
-    border: 1px solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
-.form-select {
-    display: inline;
+#paper,
+#scissors {
+    border-left: 1px solid white;
 }
+
