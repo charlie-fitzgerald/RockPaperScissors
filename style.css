@@ -12,7 +12,8 @@ html, body {
     
 }
 
-p {
+p,
+label {
     font-family: 'Roboto', sans-serif;
     font-size: 26px;
 }
@@ -30,4 +31,36 @@ p {
 
 .btn {
     text-align: center;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: fill;
+}
+
+.left-image,
+.right-image {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.form-select {
+    display: inline;
 }

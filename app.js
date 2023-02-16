@@ -3,6 +3,8 @@ const playerScoreSpan = document.getElementById('playerScore');
 const computerScoreSpan = document.getElementById('computerScore');
 const resetBtn = document.getElementById('reset');
 const resultText = document.getElementById('result');
+const playerImg = document.getElementById('left-image');
+const computerImg = document.getElementById('right-image');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -35,6 +37,18 @@ const checkWin = () => {
 
 const playRound = (playerSelection) => { 
     let computerSelection = getComputerChoice();
+
+    if (playerSelection === 'rock') {
+        playerImg.src = 'images/leftrock.png';
+    } else {
+        playerImg.src = `images/${playerSelection}.png`;
+    }
+
+    if (computerSelection === 'rock') {
+        computerImg.src = 'images/rightrock.png';
+    } else {
+        computerImg.src = `images/${computerSelection}.png`;
+    }
     
 
     if (playerSelection === computerSelection) {
@@ -84,6 +98,8 @@ resetBtn.addEventListener('click', e => {
     computerScoreSpan.style.color = 'black';
     resultText.style.color = 'black';
     resultText.innerText = 'Click a button to begin';
+    computerImg.src = 'images/start1.png';
+    playerImg.src = 'images/start1.png';
 
     btns.forEach(btn => enableBtn(btn));
 })
